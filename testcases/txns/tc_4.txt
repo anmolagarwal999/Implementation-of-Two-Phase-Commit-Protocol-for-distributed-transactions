@@ -1,0 +1,25 @@
+T41 3
+0_shrey 4 5
+0_pratyush 1 7
+1_anmol 4 5 9
+##################
+T42 4
+0_shrey 4 7
+0_pratyush 2 6
+1_anmol 9 2
+2_gurkirat 3
+#################
+T43 2
+1_anmol 8 7
+0_pratyush 3
+#################
+T44 3
+1_sanchit 5 6 1
+0_triansh 4 8 2
+2_gurkirat 4 8 2
+#################
+T45 3
+1_sanchit 5 6 1
+0_triansh 4 8 2
+2_gurkirat 4 8 2
+2_raj 5

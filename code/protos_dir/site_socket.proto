@@ -1,0 +1,90 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+
+
+option objc_class_prefix = "RTG";
+
+package site_socket;
+
+message TxnLocalDetails {
+    string txn_id = 1;
+    int32 num_people_involved = 2;
+    repeated PersonOrders people_order_details = 3;
+    repeated int32 other_sites_involved = 4;
+}
+
+message PersonOrders{
+    string PersonName = 1;
+    repeated int32 items_ordered = 2;
+}
+
+
+message GlobalVerdictMessage
+{
+    string txn_id = 1;
+    enum GLOBAL_VERDICT_ENUM {
+        GLOBAL_ABORT = 0;
+        GLOBAL_COMMIT = 1;
+      } 
+      GLOBAL_VERDICT_ENUM global_verdict= 2;
+}
+
+message VerdictMessage
+{
+    enum VERDICT_ENUM {
+        ABORT = 0;
+        COMMIT = 1;
+        UNDECIDED = 2;
+      } 
+      VERDICT_ENUM local_verdict= 1;
+      bool have_sent_local_verdict=2;
+      enum VERDICT_ENUM_GLOBAL {
+        GLOBAL_ABORT = 0;
+        GLOBAL_COMMIT = 1;
+        GLOBAL_UNDECIDED = 2;
+      } 
+      VERDICT_ENUM_GLOBAL global_verdict_recv= 3;
+}
+
+message TxnIDMessage
+{
+    string txn_id=1;
+}
+
+
+message BoolMessage
+{
+    bool val = 1;
+}
+
+message TxnGlobalMessage
+{
+    string txn_json=1;
+}
+
+// Interface exported by the server.
+service SiteSocket {
+    
+    rpc ping_site(google.protobuf.Empty) returns (BoolMessage) {}
+    rpc BeginTxn(TxnLocalDetails) returns (google.protobuf.Empty) {}
+
+    rpc PrepareTxn(TxnIDMessage) returns (BoolMessage) {}
+
+    rpc SendGlobalVerdict(GlobalVerdictMessage) returns (google.protobuf.Empty) {}
+    rpc communicate_leader_decision(GlobalVerdictMessage) returns (google.protobuf.Empty) {}
+    rpc fetch_local_decision(TxnIDMessage) returns (VerdictMessage) {}
+    rpc fetch_txn_exit_stat(TxnIDMessage) returns (BoolMessage) {}
+  
+  }
+
+
+
+// Interface exported by the server.
+service CoordinatorSocket {  
+    rpc ping_coordinator(google.protobuf.Empty) returns (BoolMessage) {}
+    rpc perform_transaction(TxnGlobalMessage) returns (BoolMessage) {}
+    rpc respond_to_recovering_client(TxnIDMessage) returns (BoolMessage){}
+}
+  
+  

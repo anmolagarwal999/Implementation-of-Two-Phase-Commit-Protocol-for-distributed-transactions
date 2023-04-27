@@ -1,0 +1,81 @@
+{
+    "T1": {
+        "begin_txn": true,
+        "payload_recv": {
+            "txn_id": "T1",
+            "num_people_involved": 1,
+            "people_order_details": [
+                {
+                    "PersonName": "anmol",
+                    "items_ordered": [
+                        4,
+                        5,
+                        9
+                    ]
+                }
+            ],
+            "other_sites_involved": [
+                0,
+                1
+            ]
+        },
+        "local_verdict": true,
+        "has_sent_local_verdict": true,
+        "global_verdict": true,
+        "acted_on_global": true
+    },
+    "T2": {
+        "begin_txn": true,
+        "payload_recv": {
+            "txn_id": "T2",
+            "num_people_involved": 2,
+            "people_order_details": [
+                {
+                    "PersonName": "anmol",
+                    "items_ordered": [
+                        1,
+                        2
+                    ]
+                },
+                {
+                    "PersonName": "gurkirat",
+                    "items_ordered": [
+                        3
+                    ]
+                }
+            ],
+            "other_sites_involved": [
+                0,
+                1
+            ]
+        },
+        "local_verdict": true,
+        "has_sent_local_verdict": true,
+        "global_verdict": false,
+        "acted_on_global": true
+    },
+    "T3": {
+        "begin_txn": true,
+        "payload_recv": {
+            "txn_id": "T3",
+            "num_people_involved": 1,
+            "people_order_details": [
+                {
+                    "PersonName": "anmol",
+                    "items_ordered": [
+                        1,
+                        2
+                    ]
+                }
+            ],
+            "other_sites_involved": [
+                0,
+                1
+            ]
+        },
+        "local_verdict": true,
+        "has_sent_local_verdict": true,
+        "global_verdict": true,
+        "acted_on_global": true
+    }
+}

@@ -1,0 +1,14 @@
+T1 3
+0_shrey 4 5
+0_pratyush 1 7
+1_anmol 4 5 9
+##################
+T2 4
+0_shrey 0 1
+0_pratyush 1 6
+1_anmol 1 2
+1_gurkirat 3
+#################
+T3 2
+1_anmol 1 2
+0_pratyush 2 6
